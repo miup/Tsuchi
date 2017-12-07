@@ -37,8 +37,12 @@ class NotificationHandler {
     }
 
     func register() {
-        tsuchi.register() {
-            print("completed")
+        tsuchi.register { granted in
+            if granted {
+                print("success")
+            } else {
+                print("failure")
+            }
         }
     }
 

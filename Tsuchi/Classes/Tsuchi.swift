@@ -45,16 +45,14 @@ public class Tsuchi<T: PushNotificationProtocol>: NSObject, UNUserNotificationCe
         Messaging.messaging().shouldEstablishDirectChannel = true
     }
 
-    public func register(completion: (() -> Void)?) {
+    public func register(completion: ((Bool) -> Void)?) {
         if !UIApplication.shared.isRegisteredForRemoteNotifications {
             requestAuthorization { (granted, _) in
-                if granted {
-                    completion?()
-                }
+                completion?(granted)
             }
             return
         }
-        completion?()
+        completion?(true)
     }
 
     public func unregister(completion: (() -> Void)?) {
