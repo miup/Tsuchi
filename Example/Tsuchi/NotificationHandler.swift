@@ -27,7 +27,6 @@ class NotificationHandler {
         }
 
         tsuchi.didOpenApplicationFromNotificationActionBlock = { pushNotification in
-            print("hoge")
             print(pushNotification)
         }
 
