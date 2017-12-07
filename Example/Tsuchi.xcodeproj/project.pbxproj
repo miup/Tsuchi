@@ -13,6 +13,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		8C3B00531FD8D0B000E7939F /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B00521FD8D0B000E7939F /* NotificationHandler.swift */; };
+		8C6B4B5F1FD7AF84005575E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C6B4B5E1FD7AF84005575E2 /* GoogleService-Info.plist */; };
 		C12DC05898A545FB85EBBB02 /* Pods_Tsuchi_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 339208D22BDF2C687A1C1D1F /* Pods_Tsuchi_Example.framework */; };
 		DED700600871EA5788E26B74 /* Pods_Tsuchi_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB80B08EFCA83AE76B068A2 /* Pods_Tsuchi_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -45,6 +47,9 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		64282A297C70DF9AF2BAD0C1 /* Tsuchi.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Tsuchi.podspec; path = ../Tsuchi.podspec; sourceTree = "<group>"; };
+		8C2298341FD7D102006FAE0A /* Tsuchi_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tsuchi_Example.entitlements; sourceTree = "<group>"; };
+		8C3B00521FD8D0B000E7939F /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
+		8C6B4B5E1FD7AF84005575E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		90F6CEEDD13FD45016D72828 /* Pods-Tsuchi_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsuchi_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tsuchi_Example/Pods-Tsuchi_Example.release.xcconfig"; sourceTree = "<group>"; };
 		A51C9A78384491BA602C81B7 /* Pods-Tsuchi_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsuchi_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tsuchi_Tests/Pods-Tsuchi_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +97,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				8C2298341FD7D102006FAE0A /* Tsuchi_Example.entitlements */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for Tsuchi */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -113,12 +119,14 @@
 		607FACD21AFB9204008FA782 /* Example for Tsuchi */ = {
 			isa = PBXGroup;
 			children = (
+				8C6B4B5E1FD7AF84005575E2 /* GoogleService-Info.plist */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				8C3B00521FD8D0B000E7939F /* NotificationHandler.swift */,
 			);
 			name = "Example for Tsuchi";
 			path = Tsuchi;
@@ -217,9 +225,15 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = Y54QU7AU8E;
 						LastSwiftMigration = 0900;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = Y54QU7AU8E;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -249,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C6B4B5F1FD7AF84005575E2 /* GoogleService-Info.plist in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -289,14 +304,12 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Tsuchi_Example/Pods-Tsuchi_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/Tsuchi/Tsuchi.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Tsuchi.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				8C3B00531FD8D0B000E7939F /* NotificationHandler.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,7 +488,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -520,7 +534,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -533,9 +547,12 @@
 			baseConfigurationReference = 47B6D1207DDE8E20731327E5 /* Pods-Tsuchi_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Tsuchi_Example.entitlements;
 				DEVELOPMENT_TEAM = Y54QU7AU8E;
 				INFOPLIST_FILE = Tsuchi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.demo.Tsuchi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -549,9 +566,12 @@
 			baseConfigurationReference = 90F6CEEDD13FD45016D72828 /* Pods-Tsuchi_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Tsuchi_Example.entitlements;
 				DEVELOPMENT_TEAM = Y54QU7AU8E;
 				INFOPLIST_FILE = Tsuchi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.demo.Tsuchi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -564,6 +584,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A51C9A78384491BA602C81B7 /* Pods-Tsuchi_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = Y54QU7AU8E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -585,6 +606,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 27C07E2547C4ED33AFF65387 /* Pods-Tsuchi_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = Y54QU7AU8E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
