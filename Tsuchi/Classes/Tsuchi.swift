@@ -35,7 +35,7 @@ public class Tsuchi<T: PushNotificationProtocol>: NSObject, UNUserNotificationCe
 
     @objc func applicationDidEnterBackground(_ application: UIApplication) {
         Messaging.messaging().shouldEstablishDirectChannel = false
-        debugPrint("[NotificationManager] Disconnected from FCM")
+        debugPrint("[Tsuchi] Disconnected from FCM")
     }
 
     func connectToFcm() {
@@ -76,8 +76,8 @@ public class Tsuchi<T: PushNotificationProtocol>: NSObject, UNUserNotificationCe
     public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         guard notification.request.trigger is UNPushNotificationTrigger else { completionHandler([]); return }
         let userInfo: [AnyHashable: Any] = notification.request.content.userInfo
-        debugPrint("[NotificationManager] willPresent Message ID: \(userInfo["gcm.message_id"] as Any)")
-        debugPrint("[NotificationManager] ", userInfo)
+        debugPrint("[Tsuchi] willPresent Message ID: \(userInfo["gcm.message_id"] as Any)")
+        debugPrint("[Tsuchi] ", userInfo)
         do {
             let data = try JSONSerialization.data(withJSONObject: userInfo, options: .prettyPrinted)
             let payload: T = try JSONDecoder().decode(T.self, from: data)
@@ -95,7 +95,7 @@ public class Tsuchi<T: PushNotificationProtocol>: NSObject, UNUserNotificationCe
     // open notification
     public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         guard response.notification.request.trigger is UNPushNotificationTrigger else { completionHandler(); return }
-        debugPrint("[NotificationManager] didReceive response ID: \(response)")
+        debugPrint("[Tsuchi] didReceive response ID: \(response)")
         let userInfo: [AnyHashable: Any] = response.notification.request.content.userInfo
         do {
             let data = try JSONSerialization.data(withJSONObject: userInfo, options: .prettyPrinted)
@@ -110,12 +110,13 @@ public class Tsuchi<T: PushNotificationProtocol>: NSObject, UNUserNotificationCe
 
     //MARK: MessagingDelegate
     public func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
-        debugPrint("[NotificationManager] didRefreshRegistrationToken", fcmToken)
+        debugPrint("[Tsuchi] didRefreshRegistrationToken", fcmToken)
         connectToFcm()
         didRefreshRegistrationTokenActionBlock?(fcmToken)
     }
 
     public func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        debugPrint("[Tsuchi] didReceiveRegistrationToken", fcmToken)
         connectToFcm()
         didRefreshRegistrationTokenActionBlock?(fcmToken)
     }
