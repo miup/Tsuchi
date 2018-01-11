@@ -42,7 +42,7 @@ PODS:
     - Nimble (~> 7.0)
   - Protobuf (3.5.0)
   - Quick (1.2.0)
-  - Tsuchi (0.1.0):
+  - Tsuchi (0.1.1):
     - Firebase/Core
     - Firebase/Messaging
 
@@ -70,7 +70,7 @@ SPEC CHECKSUMS:
   Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
-  Tsuchi: d239f8950fdcd231095388f975aa74ea89d2ac4b
+  Tsuchi: 4ce6ed964dce9645291ad54ee083e08d5568bc96
 
 PODFILE CHECKSUM: e5307c00f8c9f4914548bba9ce7e86e0015cbb6b
 
