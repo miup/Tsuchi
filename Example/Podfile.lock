@@ -43,7 +43,7 @@ PODS:
   - Protobuf (3.5.0)
   - Quick (1.2.0)
   - Result (3.2.4)
-  - Tsuchi (0.1.1):
+  - Tsuchi (0.2.0):
     - Firebase/Core
     - Firebase/Messaging
     - Result
@@ -73,7 +73,7 @@ SPEC CHECKSUMS:
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
-  Tsuchi: 77718c8680173cff77c660774806da5f18318275
+  Tsuchi: 8e1c1dc28c1ef3444d19a6c57338aa0fb393a709
 
 PODFILE CHECKSUM: e5307c00f8c9f4914548bba9ce7e86e0015cbb6b
 
