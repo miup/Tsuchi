@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Tsuchi'
-  s.version          = '0.2.0'
+  s.version          = '0.2.1'
   s.summary          = 'Tsuchi is a Firebase Cloud Messaging wrapper.'
 
   s.description      = <<-DESC
