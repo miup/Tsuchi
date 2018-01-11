@@ -104,6 +104,14 @@ public class Tsuchi: NSObject {
             }
         })
     }
+
+    public func subscribe(toTopic topic: TopicType) {
+        Messaging.messaging().subscribe(toTopic: topic.rawValue)
+    }
+
+    public func unsubscribe(fromTopic topic: TopicType) {
+        Messaging.messaging().unsubscribe(fromTopic: topic.rawValue)
+    }
 }
 
 extension Tsuchi: UNUserNotificationCenterDelegate {
