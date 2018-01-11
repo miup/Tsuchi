@@ -20,4 +20,5 @@ You can define type safe Notification object, and handle it.
   s.static_framework = true
   s.dependency 'Firebase/Core'
   s.dependency 'Firebase/Messaging'
+  s.dependency 'Result'
 end

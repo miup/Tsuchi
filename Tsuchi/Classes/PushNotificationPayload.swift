@@ -1,5 +1,5 @@
 //
-//  NotificationProtocol.swift
+//  PushNotificationPayload.swift
 //  Tsuchi
 //
 //  Created by kazuya-miura on 2017/12/07.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol PushNotificationProtocol: Decodable {
+public protocol PushNotificationPayload: Decodable {
     var aps: APS? { get }
 }
 

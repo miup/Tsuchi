@@ -8,7 +8,7 @@
 
 import Tsuchi
 
-struct PushNotification: PushNotificationProtocol {
+struct PushNotification: PushNotificationPayload {
     let hoge: String
     let hige: String
     var aps: APS?
@@ -16,22 +16,23 @@ struct PushNotification: PushNotificationProtocol {
 
 class NotificationHandler {
     static let shared = NotificationHandler()
-    private let tsuchi: Tsuchi<PushNotification> = Tsuchi()
+    private let tsuchi = Tsuchi.shared
 
     private init() {
         // initialize your tsuchi settings
-        tsuchi.isShowingBanner = true
+        tsuchi.showsNotificationBannerOnPresenting = true
 
         tsuchi.didRefreshRegistrationTokenActionBlock = { token in
             print(token)
         }
 
-        tsuchi.didOpenApplicationFromNotificationActionBlock = { pushNotification in
-            print(pushNotification)
-        }
-
-        tsuchi.didReceiveRemoteNotificationActionBlock = { pushNotification in
-            print(pushNotification)
+        tsuchi.subscribe(PushNotification.self) { result in
+            switch result {
+            case let .success((payload, mode)):
+                print("reiceived: \(payload), mode: \(mode)")
+            case let .failure(error):
+                print("error: \(error)")
+            }
         }
     }
 
