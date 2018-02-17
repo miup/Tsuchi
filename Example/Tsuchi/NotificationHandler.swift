@@ -11,22 +11,25 @@ import Tsuchi
 struct PushNotification: PushNotificationPayload {
     let hoge: String
     let hige: String
-    var aps: APS?
+    let aps: APS?
+}
+
+enum Topic: String, TopicType {
+    case news
 }
 
 class NotificationHandler {
     static let shared = NotificationHandler()
-    private let tsuchi = Tsuchi.shared
 
     private init() {
         // initialize your tsuchi settings
-        tsuchi.showsNotificationBannerOnPresenting = true
+        Tsuchi.shared.showsNotificationBannerOnPresenting = true
 
-        tsuchi.didRefreshRegistrationTokenActionBlock = { token in
-            print(token)
+        Tsuchi.shared.didRefreshRegistrationTokenActionBlock = { token in
+            // save token to your Database
         }
 
-        tsuchi.subscribe(PushNotification.self) { result in
+        Tsuchi.shared.subscribe(PushNotification.self) { result in
             switch result {
             case let .success((payload, mode)):
                 print("reiceived: \(payload), mode: \(mode)")
@@ -37,19 +40,26 @@ class NotificationHandler {
     }
 
     func register() {
-        tsuchi.register { granted in
+        Tsuchi.shared.register { granted in
             if granted {
-                print("success")
+                print("success registration")
             } else {
-                print("failure")
+                print("failure registration")
             }
         }
     }
 
     func unregister() {
-        tsuchi.unregister {
+        Tsuchi.shared.unregister {
             print("unregister")
         }
     }
 
+    func subscribe(topic: Topic) {
+        Tsuchi.shared.subscribe(toTopic: topic)
+    }
+
+    func unsubscribe(topic: Topic) {
+        Tsuchi.shared.unsubscribe(fromTopic: topic)
+    }
 }

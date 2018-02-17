@@ -3,6 +3,7 @@ platform :ios, '11.0'
 
 target 'Tsuchi_Example' do
   pod 'Tsuchi', :path => '../'
+  pod 'I'
 
   target 'Tsuchi_Tests' do
     inherit! :search_paths
