@@ -4,32 +4,33 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - Firebase/Core (4.9.0):
-    - FirebaseAnalytics (= 4.0.9)
-    - FirebaseCore (= 4.0.15)
-  - Firebase/Messaging (4.9.0):
-    - Firebase/Core
-    - FirebaseMessaging (= 2.1.0)
-  - FirebaseAnalytics (4.0.9):
-    - FirebaseCore (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - Firebase/Core (5.0.1):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.0.0)
+  - Firebase/CoreOnly (5.0.1):
+    - FirebaseCore (= 5.0.1)
+  - Firebase/Messaging (5.0.1):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.0.0)
+  - FirebaseAnalytics (5.0.0):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
-  - FirebaseCore (4.0.15):
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseInstanceID (2.0.9):
-    - FirebaseCore (~> 4.0)
-  - FirebaseMessaging (2.1.0):
-    - FirebaseAnalytics (~> 4.0)
-    - FirebaseCore (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
+  - FirebaseCore (5.0.1):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseInstanceID (3.0.0):
+    - FirebaseCore (~> 5.0)
+  - FirebaseMessaging (3.0.0):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - Protobuf (~> 3.1)
-  - GoogleToolboxForMac/Defines (2.1.3)
-  - GoogleToolboxForMac/Logger (2.1.3):
-    - GoogleToolboxForMac/Defines (= 2.1.3)
-  - GoogleToolboxForMac/NSData+zlib (2.1.3):
-    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - GoogleToolboxForMac/Logger (2.1.4):
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
   - I (0.1.0)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -44,10 +45,10 @@ PODS:
     - Nimble (~> 7.0)
   - Protobuf (3.5.0)
   - Quick (1.2.0)
-  - Result (3.2.4)
+  - Result (4.0.0)
   - Tsuchi (0.2.2):
-    - Firebase/Core
-    - Firebase/Messaging
+    - Firebase/Core (~> 5.0.0)
+    - Firebase/Messaging (~> 5.0.0)
     - Result
 
 DEPENDENCIES:
@@ -58,27 +59,44 @@ DEPENDENCIES:
   - Quick (~> 1.2.0)
   - Tsuchi (from `../`)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - FBSnapshotTestCase
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - GoogleToolboxForMac
+    - I
+    - nanopb
+    - Nimble
+    - Nimble-Snapshots
+    - Protobuf
+    - Quick
+    - Result
+
 EXTERNAL SOURCES:
   Tsuchi:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  Firebase: 632216af3ed7f31e3be34776947fdc7546cfb572
-  FirebaseAnalytics: 388b630c15713f5dbf364071f5f3d6077fb52f4e
-  FirebaseCore: 3bd047463058fa6b5d312c97502c52e45401cdfb
-  FirebaseInstanceID: d2058a35e9bebda1b6dd42486b84917bde552a9d
-  FirebaseMessaging: 2bafab2d0f3ab3dfd753101c2c32995c2051b5da
-  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  Firebase: d6861c2059d8c32d1e6dd8932e22ada346d90a3a
+  FirebaseAnalytics: 19812b49fa5f283dd6b23edf8a14b5d477029ab8
+  FirebaseCore: cafc814b2d84fc8733f09e653041cc2165332ad7
+  FirebaseInstanceID: 83e0040351565df711a5db3d8ebe5ea21aca998a
+  FirebaseMessaging: f2360a966ecfb0d14facf0fbdf306efc2df0ddbe
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   I: c06e4985b9a046cddacf82ab3900fe1fa1f162b1
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
-  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
-  Tsuchi: 587d482528332a0c5e7e02259dd39846940edfe9
+  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
+  Tsuchi: 681845f9609c8451294303f95d18786521332233
 
 PODFILE CHECKSUM: a520a6cf1b291d9ca5d1a6c16642c451d86a624f
 
-COCOAPODS: 1.4.0.beta.2
+COCOAPODS: 1.5.2
