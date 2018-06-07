@@ -18,7 +18,9 @@ You can define type safe Notification object, and handle it.
   s.source_files = 'Tsuchi/Classes/**/*'
 
   s.static_framework = true
-  s.dependency 'Firebase/Core'
-  s.dependency 'Firebase/Messaging'
+  s.static_framework = true
+
+  s.dependency 'Firebase/Core', '~>5.0.0'
+  s.dependency 'Firebase/Messaging', '~>5.0.0'
   s.dependency 'Result'
 end
