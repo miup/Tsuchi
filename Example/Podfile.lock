@@ -59,7 +59,7 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - Nimble (7.0.3)
+  - Nimble (7.3.0)
   - Nimble-Snapshots (6.3.0):
     - Nimble-Snapshots/Core (= 6.3.0)
   - Nimble-Snapshots/Core (6.3.0):
@@ -68,17 +68,17 @@ PODS:
   - Protobuf (3.6.1)
   - Quick (1.2.0)
   - Result (4.0.0)
-  - Tsuchi (0.3.1):
+  - Tsuchi (0.3.2):
     - Firebase/Core (~> 5.0)
     - Firebase/Messaging (~> 5.0)
     - Result
 
 DEPENDENCIES:
-  - FBSnapshotTestCase (~> 2.1.4)
+  - FBSnapshotTestCase (~> 2.1)
   - I
-  - Nimble (~> 7.0.2)
-  - Nimble-Snapshots (~> 6.3.0)
-  - Quick (~> 1.2.0)
+  - Nimble (~> 7.3)
+  - Nimble-Snapshots (~> 6.3)
+  - Quick (~> 1.2)
   - Tsuchi (from `../`)
 
 SPEC REPOS:
@@ -114,13 +114,13 @@ SPEC CHECKSUMS:
   GoogleUtilities: 06b66f9567769a7958db20a92f0128b2843e49d5
   I: c06e4985b9a046cddacf82ab3900fe1fa1f162b1
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  Nimble: c8d6a1f463701921c46de965c673e13cafa09196
   Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
-  Tsuchi: cec4df666aafd1b4a7ced8fc1967d9b4f7a9e4d1
+  Tsuchi: ed3b350f7a67e4662b5b936c8cc00c3f7fa52d30
 
-PODFILE CHECKSUM: a520a6cf1b291d9ca5d1a6c16642c451d86a624f
+PODFILE CHECKSUM: 084aa82e26e5a691f7e9f18d77fcab82c8f15979
 
 COCOAPODS: 1.5.2

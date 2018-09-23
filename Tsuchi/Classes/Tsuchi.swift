@@ -43,13 +43,13 @@ public class Tsuchi: NSObject {
         super.init()
         UNUserNotificationCenter.current().delegate = self
         Messaging.messaging().delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: .UIApplicationDidBecomeActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: .UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
 
     deinit {
-        NotificationCenter.default.removeObserver(self, name: .UIApplicationDidBecomeActive, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
 
     public func subscribe<T: PushNotificationPayload>(_ type: T.Type, handler: @escaping (Result<(T, NotificationMode), AnyError>) -> Void) {
