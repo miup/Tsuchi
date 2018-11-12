@@ -13,8 +13,8 @@ public protocol PushNotificationPayload: Decodable {
 
 public struct APS: Decodable {
     public struct Alert: Decodable {
-        let body: String?
-        let title: String?
+        public let body: String?
+        public let title: String?
     }
     public let alert: Alert?
     public let badge: Int?
