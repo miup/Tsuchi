@@ -56,9 +56,7 @@ public class Tsuchi<T: PushNotificationProtocol>: NSObject, UNUserNotificationCe
     }
 
     public func unregister(completion: (() -> Void)?) {
-        if UIApplication.shared.isRegisteredForRemoteNotifications {
-            UIApplication.shared.unregisterForRemoteNotifications()
-        }
+        UIApplication.shared.unregisterForRemoteNotifications()
         completion?()
     }
 
