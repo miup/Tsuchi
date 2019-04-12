@@ -1,5 +1,6 @@
 use_frameworks!
 platform :ios, '11.0'
+inhibit_all_warnings!
 
 target 'Tsuchi_Example' do
   pod 'Tsuchi', :path => '../'
@@ -8,9 +9,9 @@ target 'Tsuchi_Example' do
   target 'Tsuchi_Tests' do
     inherit! :search_paths
 
-    pod 'Quick', '~> 1.2'
-  pod 'Nimble', '~> 7.3'
+    pod 'Quick', '~> 2.0'
+  pod 'Nimble', '~> 8.0'
   pod 'FBSnapshotTestCase' , '~> 2.1'
-  pod 'Nimble-Snapshots' , '~> 6.3'
+  pod 'Nimble-Snapshots'
   end
 end
