@@ -9,11 +9,10 @@ import Foundation
 import UIKit
 import UserNotifications
 import FirebaseMessaging
-import Result
 
 public class Tsuchi: NSObject {
     private struct Container<T: PushNotificationPayload>: SubscribeContainer {
-        let handler: (Result<(T, NotificationMode), AnyError>) -> Void
+        let handler: (Result<(T, NotificationMode), Error>) -> Void
 
         func parse(_ json: [AnyHashable: Any], mode: NotificationMode) {
             do {
@@ -21,7 +20,7 @@ public class Tsuchi: NSObject {
                 let notification = try JSONDecoder().decode(T.self, from: data)
                 handler(.success((notification, mode)))
             } catch let error {
-                handler(.failure(AnyError(error)))
+                handler(.failure(error))
             }
         }
     }
@@ -52,7 +51,7 @@ public class Tsuchi: NSObject {
         NotificationCenter.default.removeObserver(self, name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
 
-    public func subscribe<T: PushNotificationPayload>(_ type: T.Type, handler: @escaping (Result<(T, NotificationMode), AnyError>) -> Void) {
+    public func subscribe<T: PushNotificationPayload>(_ type: T.Type, handler: @escaping (Result<(T, NotificationMode), Error>) -> Void) {
         self.container = AnyContainer(base: Container<T>(handler: handler))
     }
 

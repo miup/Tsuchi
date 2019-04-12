@@ -80,11 +80,9 @@ PODS:
     - Nimble (~> 8.0)
   - Protobuf (3.7.0)
   - Quick (2.0.0)
-  - Result (4.1.0)
   - Tsuchi (0.4.3):
     - Firebase/Core (~> 5.0)
     - Firebase/Messaging (~> 5.0)
-    - Result
 
 DEPENDENCIES:
   - FBSnapshotTestCase (~> 2.1)
@@ -112,7 +110,6 @@ SPEC REPOS:
     - Nimble-Snapshots
     - Protobuf
     - Quick
-    - Result
 
 EXTERNAL SOURCES:
   Tsuchi:
@@ -135,9 +132,8 @@ SPEC CHECKSUMS:
   Nimble-Snapshots: 2d6d712ceb2d1850d88f850fbd7c732618106022
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   Quick: ce1276c7c27ba2da3cb2fd0cde053c3648b3b22d
-  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
-  Tsuchi: 614440581f5c8279e5def5181fe26e9f91a2e6eb
+  Tsuchi: 31b91d73c46701c84c5390e42bc1dcf80a1cd769
 
-PODFILE CHECKSUM: 4e6ae7bff20f40cd0aec3746db40998932770c92
+PODFILE CHECKSUM: 655b958924b6246744a7cdb2d0c7261e7a0a88e4
 
 COCOAPODS: 1.5.2
