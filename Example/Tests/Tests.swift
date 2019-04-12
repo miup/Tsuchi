@@ -6,43 +6,25 @@ import Tsuchi
 
 class TableOfContentsSpec: QuickSpec {
     override func spec() {
-        describe("these will fail") {
-
-            it("can do maths") {
-                expect(1) == 2
-            }
-
-            it("can read") {
-                expect("number") == "string"
-            }
-
-            it("will eventually fail") {
-                expect("time").toEventually( equal("done") )
-            }
-            
-            context("these will pass") {
-
-                it("can do maths") {
-                    expect(23) == 23
+        describe("payload decode") {
+            context("`aps` decode") {
+                it("can decode only body field") {
+                    let payload = #"{ "alert" : "Message received from Bob" }"#
+                    expect(try? JSONDecoder().decode(APS.self, from: payload.data(using: .utf8)!)).toNot(beNil())
                 }
-
-                it("can read") {
-                    expect("🐮") == "🐮"
-                }
-
-                it("will eventually pass") {
-                    var time = "passing"
-
-                    DispatchQueue.main.async {
-                        time = "done"
+                it("can decode body and more fields") {
+                    let payload = #"""
+                    {
+                      "alert" : {
+                        "title" : "Game Request",
+                        "body" : "Bob wants to play poker",
+                        "action-loc-key" : "PLAY"
+                      },
+                      "badge" : 5
                     }
+                    """#
+                    expect(try? JSONDecoder().decode(APS.self, from: payload.data(using: .utf8)!)).toNot(beNil())
 
-                    waitUntil { done in
-                        Thread.sleep(forTimeInterval: 0.5)
-                        expect(time) == "done"
-
-                        done()
-                    }
                 }
             }
         }
