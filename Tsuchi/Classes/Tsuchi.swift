@@ -36,7 +36,37 @@ public class Tsuchi: NSObject {
     public static let shared = Tsuchi()
     private var container: AnyContainer?
     public var didRefreshRegistrationTokenActionBlock: ((String) -> Void)?
-    public var showsNotificationBannerOnPresenting: Bool = true
+
+    public enum NotificationOptionType {
+        case all
+        case noAlert
+        case noBadge
+        case noSound
+        case alertOnly
+        case badgeOnly
+        case soundOnly
+        
+        func getOptions() -> UNNotificationPresentationOptions {
+            switch self {
+            case .all:
+                return [.alert, .badge, .sound]
+            case .noAlert:
+                return [.badge, .sound]
+            case .noBadge:
+                return [.alert, .sound]
+            case .noSound:
+                return [.alert, .badge]
+            case .alertOnly:
+                return [.alert]
+            case .badgeOnly:
+                return [.badge]
+            case .soundOnly:
+                return [.sound]
+            }
+        }
+    }
+
+    public var notificationOptionType: NotificationOptionType = .all
 
     private override init() {
         super.init()
@@ -118,11 +148,7 @@ extension Tsuchi: UNUserNotificationCenterDelegate {
         debugPrint("[Tsuchi] willPresent Message ID: \(userInfo["gcm.message_id"] as Any)")
         debugPrint("[Tsuchi] ", userInfo)
         container?.base.parse(userInfo, mode: .willPresent)
-        if showsNotificationBannerOnPresenting {
-            completionHandler([.alert, .badge, .sound])
-        } else {
-            completionHandler([.badge, .sound])
-        }
+        completionHandler(self.notificationOptionType.getOptions())
     }
 
     public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
