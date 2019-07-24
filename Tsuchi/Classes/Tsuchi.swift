@@ -45,6 +45,7 @@ public class Tsuchi: NSObject {
         case alertOnly
         case badgeOnly
         case soundOnly
+        case none
         
         func getOptions() -> UNNotificationPresentationOptions {
             switch self {
@@ -62,6 +63,8 @@ public class Tsuchi: NSObject {
                 return [.badge]
             case .soundOnly:
                 return [.sound]
+            case .none:
+                return []
             }
         }
     }
