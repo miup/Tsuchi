@@ -36,7 +36,13 @@ public class Tsuchi: NSObject {
     public static let shared = Tsuchi()
     private var container: AnyContainer?
     public var didRefreshRegistrationTokenActionBlock: ((String) -> Void)?
-    public var showsNotificationBannerOnPresenting: Bool = true
+    @available(*, deprecated, message: "Use `notificationPresentationOptions` instead.")
+    public var showsNotificationBannerOnPresenting: Bool = true {
+        didSet {
+            notificationPresentationOptions = showsNotificationBannerOnPresenting ? [.alert, .badge, .sound] : [.badge, .sound]
+        }
+    }
+    public var notificationPresentationOptions: UNNotificationPresentationOptions = [.alert, .badge, .sound]
 
     private override init() {
         super.init()
@@ -118,11 +124,7 @@ extension Tsuchi: UNUserNotificationCenterDelegate {
         debugPrint("[Tsuchi] willPresent Message ID: \(userInfo["gcm.message_id"] as Any)")
         debugPrint("[Tsuchi] ", userInfo)
         container?.base.parse(userInfo, mode: .willPresent)
-        if showsNotificationBannerOnPresenting {
-            completionHandler([.alert, .badge, .sound])
-        } else {
-            completionHandler([.badge, .sound])
-        }
+        completionHandler(notificationPresentationOptions)
     }
 
     public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
