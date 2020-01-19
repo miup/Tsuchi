@@ -23,7 +23,7 @@ class NotificationHandler {
 
     private init() {
         // initialize your tsuchi settings
-        Tsuchi.shared.showsNotificationBannerOnPresenting = true
+        Tsuchi.shared.notificationPresentationOptions = [.alert, .badge, .sound]
 
         Tsuchi.shared.didRefreshRegistrationTokenActionBlock = { token in
             // save token to your Database
