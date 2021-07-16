@@ -10,7 +10,7 @@ target 'Tsuchi_Example' do
     inherit! :search_paths
 
     pod 'Quick', '~> 2.0'
-    pod 'Nimble', '~> 8.0'
+    pod 'Nimble', '~> 9.2'
     pod 'FBSnapshotTestCase' , '~> 2.1'
     pod 'Nimble-Snapshots'
   end

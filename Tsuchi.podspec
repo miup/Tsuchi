@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Tsuchi'
-  s.version          = '0.7.0'
+  s.version          = '0.8.0'
   s.summary          = 'Tsuchi is a Firebase Cloud Messaging wrapper.'
 
   s.description      = <<-DESC
@@ -20,6 +20,6 @@ You can define type safe Notification object, and handle it.
   s.static_framework = true
   s.static_framework = true
 
-  s.dependency 'Firebase/Core', '~>6.0'
-  s.dependency 'Firebase/Messaging', '~>6.0'
+  s.dependency 'Firebase/Core', '~>8.3.0'
+  s.dependency 'Firebase/Messaging', '~>8.3.0'
 end

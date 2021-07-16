@@ -48,33 +48,10 @@ public class Tsuchi: NSObject {
         super.init()
         UNUserNotificationCenter.current().delegate = self
         Messaging.messaging().delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
 
     public func subscribe<T: PushNotificationPayload>(_ type: T.Type, handler: @escaping (Result<(T, NotificationMode), Error>) -> Void) {
         self.container = AnyContainer(base: Container<T>(handler: handler))
-    }
-
-    @objc func applicationDidBecomeActive(_ application: UIApplication) {
-        self.connectToFcm()
-    }
-
-    @objc func applicationDidEnterBackground(_ application: UIApplication) {
-        Messaging.messaging().shouldEstablishDirectChannel = false
-        debugPrint("[Tsuchi] Disconnected from FCM")
-    }
-
-    func connectToFcm() {
-        guard Messaging.messaging().fcmToken != nil else {
-            return
-        }
-        Messaging.messaging().shouldEstablishDirectChannel = true
     }
 
     public func register(completion: ((Bool) -> Void)?) {
@@ -137,24 +114,9 @@ extension Tsuchi: UNUserNotificationCenterDelegate {
 }
 
 extension Tsuchi: MessagingDelegate {
-    public func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
-        debugPrint("[Tsuchi] didRefreshRegistrationToken", fcmToken)
-        connectToFcm()
-        didRefreshRegistrationTokenActionBlock?(fcmToken)
-    }
-
-    public func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+    public func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         debugPrint("[Tsuchi] didReceiveRegistrationToken", fcmToken)
-        connectToFcm()
-        didRefreshRegistrationTokenActionBlock?(fcmToken)
-    }
-
-    public func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-        debugPrint(remoteMessage.appData)
-    }
-
-    public func application(received remoteMessage: MessagingRemoteMessage) {
-        debugPrint(remoteMessage.appData)
+        didRefreshRegistrationTokenActionBlock?(fcmToken ?? "")
     }
 }
 
